@@ -1,0 +1,20 @@
+# permissions for end users to view rtcpeerconnections.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: rtcpeerconnection-viewer-role
+rules:
+- apiGroups:
+  - webrtc.gitlab.com/alexandervtrujillo
+  resources:
+  - rtcpeerconnections
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - webrtc.gitlab.com/alexandervtrujillo
+  resources:
+  - rtcpeerconnections/status
+  verbs:
+  - get

@@ -1,0 +1,24 @@
+# permissions for end users to edit rtcpeerconnections.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: rtcpeerconnection-editor-role
+rules:
+- apiGroups:
+  - webrtc.gitlab.com/alexandervtrujillo
+  resources:
+  - rtcpeerconnections
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - webrtc.gitlab.com/alexandervtrujillo
+  resources:
+  - rtcpeerconnections/status
+  verbs:
+  - get

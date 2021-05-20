@@ -1,3 +1,7 @@
 domain: gitlab.com/alexandervtrujillo
 repo: gitlab.com/alexandervtrujillo/k8s-webrtc
+resources:
+- group: webrtc
+  kind: RTCPeerConnection
+  version: v1
 version: "2"
