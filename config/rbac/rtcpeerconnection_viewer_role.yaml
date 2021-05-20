@@ -1,0 +1,20 @@
+# permissions for end users to view rtcpeerconnections.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: rtcpeerconnection-viewer-role
+rules:
+- apiGroups:
+  - pion-webrtc.k8s.alerty.org
+  resources:
+  - rtcpeerconnections
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - pion-webrtc.k8s.alerty.org
+  resources:
+  - rtcpeerconnections/status
+  verbs:
+  - get

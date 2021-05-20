@@ -1,0 +1,7 @@
+apiVersion: pion-webrtc.k8s.alerty.org/v1beta1
+kind: RTCPeerConnection
+metadata:
+  name: rtcpeerconnection-sample
+spec:
+  # Add fields here
+  foo: bar

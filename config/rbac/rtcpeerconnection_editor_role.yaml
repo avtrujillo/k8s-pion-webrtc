@@ -1,0 +1,24 @@
+# permissions for end users to edit rtcpeerconnections.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: rtcpeerconnection-editor-role
+rules:
+- apiGroups:
+  - pion-webrtc.k8s.alerty.org
+  resources:
+  - rtcpeerconnections
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - pion-webrtc.k8s.alerty.org
+  resources:
+  - rtcpeerconnections/status
+  verbs:
+  - get

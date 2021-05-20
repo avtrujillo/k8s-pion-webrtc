@@ -30,6 +30,9 @@ import (
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/healthz"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
+
+	pionwebrtcv1beta1 "gitlab.com/alexandervtrujillo/k8s-pion-webrtc/api/v1beta1"
+	"gitlab.com/alexandervtrujillo/k8s-pion-webrtc/controllers"
 	//+kubebuilder:scaffold:imports
 )
 
@@ -41,6 +44,7 @@ var (
 func init() {
 	utilruntime.Must(clientgoscheme.AddToScheme(scheme))
 
+	utilruntime.Must(pionwebrtcv1beta1.AddToScheme(scheme))
 	//+kubebuilder:scaffold:scheme
 }
 
@@ -74,6 +78,14 @@ func main() {
 		os.Exit(1)
 	}
 
+	if err = (&controllers.RTCPeerConnectionReconciler{
+		Client: mgr.GetClient(),
+		Log:    ctrl.Log.WithName("controllers").WithName("RTCPeerConnection"),
+		Scheme: mgr.GetScheme(),
+	}).SetupWithManager(mgr); err != nil {
+		setupLog.Error(err, "unable to create controller", "controller", "RTCPeerConnection")
+		os.Exit(1)
+	}
 	//+kubebuilder:scaffold:builder
 
 	if err := mgr.AddHealthzCheck("healthz", healthz.Ping); err != nil {
