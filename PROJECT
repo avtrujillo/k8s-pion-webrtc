@@ -1,0 +1,6 @@
+domain: k8s.alerty.org
+layout:
+- go.kubebuilder.io/v3
+projectName: k8s-webrtc
+repo: gitlab.com/alexandervtrujillo/k8s-pion-webrtc
+version: "3"
